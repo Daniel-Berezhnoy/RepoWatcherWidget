@@ -23,9 +23,9 @@ struct Provider: TimelineProvider {
             let nextUpdate = Date().addingTimeInterval(43_200) // 12 hours = 43,200 seconds
             
             do {
-                let repo = try await NetworkManager.shared.getRepo(from: RepoURL.swiftUIBuddy)
+                let repo = try await NetworkManager.shared.getRepo(from: RepoURL.codeEdit)
                 let entry = RepoEntry(date: .now, repo: repo)
-                
+
                 let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
                 completion(timeline)
             } catch {

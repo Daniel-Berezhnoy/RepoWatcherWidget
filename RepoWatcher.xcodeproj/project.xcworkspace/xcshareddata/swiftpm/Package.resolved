@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "swiftuibuddy",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Daniel-Berezhnoy/SwiftUIBuddy",
+      "state" : {
+        "revision" : "11d1262b41943d00f3f7a21515bcd56d96da447b",
+        "version" : "1.0.1"
+      }
+    }
+  ],
+  "version" : 2
+}

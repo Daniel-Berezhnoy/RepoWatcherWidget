@@ -21,6 +21,7 @@
 		B9F7283D29B14D98007E8264 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F7283B29B14D98007E8264 /* Repository.swift */; };
 		B9F7283F29B1C09F007E8264 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F7283E29B1C09F007E8264 /* NetworkManager.swift */; };
 		B9F7284029B1C09F007E8264 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F7283E29B1C09F007E8264 /* NetworkManager.swift */; };
+		B9F7284329B1CE17007E8264 /* SwiftUIBuddy in Frameworks */ = {isa = PBXBuildFile; productRef = B9F7284229B1CE17007E8264 /* SwiftUIBuddy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9F7284329B1CE17007E8264 /* SwiftUIBuddy in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +164,9 @@
 				B9F7283529AFE5AA007E8264 /* PBXTargetDependency */,
 			);
 			name = RepoWatcher;
+			packageProductDependencies = (
+				B9F7284229B1CE17007E8264 /* SwiftUIBuddy */,
+			);
 			productName = RepoWatcher;
 			productReference = B9F7281129AFE49E007E8264 /* RepoWatcher.app */;
 			productType = "com.apple.product-type.application";
@@ -210,6 +215,9 @@
 				Base,
 			);
 			mainGroup = B9F7280829AFE49E007E8264;
+			packageReferences = (
+				B9F7284129B1CE17007E8264 /* XCRemoteSwiftPackageReference "SwiftUIBuddy" */,
+			);
 			productRefGroup = B9F7281229AFE49E007E8264 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -533,6 +541,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B9F7284129B1CE17007E8264 /* XCRemoteSwiftPackageReference "SwiftUIBuddy" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Daniel-Berezhnoy/SwiftUIBuddy";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B9F7284229B1CE17007E8264 /* SwiftUIBuddy */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B9F7284129B1CE17007E8264 /* XCRemoteSwiftPackageReference "SwiftUIBuddy" */;
+			productName = SwiftUIBuddy;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B9F7280929AFE49E007E8264 /* Project object */;
 }
