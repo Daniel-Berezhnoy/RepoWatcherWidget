@@ -19,18 +19,14 @@ struct Provider: TimelineProvider {
     }
     
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+        
         var entries: [RepoEntry] = []
         
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        //        let currentDate = Date()
-        //        for hourOffset in 0 ..< 5 {
-        //            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-        //            let entry = RepoEntry(date: entryDate)
-        //            entries.append(entry)
-        //        }
+        let nextUpdate = Date().addingTimeInterval(43_200) // 12 hours = 43,200 seconds
         
-        let timeline = Timeline(entries: entries, policy: .atEnd)
+        let timeline = Timeline(entries: entries, policy: .after(nextUpdate))
         completion(timeline)
+        
     }
 }
 
