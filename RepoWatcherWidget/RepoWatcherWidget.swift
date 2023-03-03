@@ -19,14 +19,19 @@ struct Provider: TimelineProvider {
     }
     
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        
-        var entries: [RepoEntry] = []
-        
-        let nextUpdate = Date().addingTimeInterval(43_200) // 12 hours = 43,200 seconds
-        
-        let timeline = Timeline(entries: entries, policy: .after(nextUpdate))
-        completion(timeline)
-        
+        Task {
+            let nextUpdate = Date().addingTimeInterval(43_200) // 12 hours = 43,200 seconds
+            
+            do {
+                let repo = try await NetworkManager.shared.getRepo(from: RepoURL.swiftUIBuddy)
+                let entry = RepoEntry(date: .now, repo: repo)
+                
+                let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
+                completion(timeline)
+            } catch {
+                print("❌ ERROR: \(error.localizedDescription)")
+            }
+        }
     }
 }
 
