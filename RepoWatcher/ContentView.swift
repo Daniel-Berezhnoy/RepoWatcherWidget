@@ -10,13 +10,15 @@ import SwiftUIBuddy
 
 struct ContentView: View {
     var body: some View {
-        let swiftUIBuddyLink = "https://github.com/Daniel-Berezhnoy/SwiftUIBuddy"
+        
+        let swiftUIBuddyURL = "https://github.com/Daniel-Berezhnoy/SwiftUIBuddy"
+        let publishURL = "https://github.com/JohnSundell/Publish"
         
         VStack {
             StandardButton("Fire off the Network Call 🚀") {
                 do {
                     Task {
-                        try await NetworkManager.shared.getRepo(from: swiftUIBuddyLink)
+                        try await NetworkManager.shared.getRepo(from: publishURL)
                     }
                 } catch {
                     print("❌ ERROR: \(error.localizedDescription)")

@@ -16,13 +16,11 @@ class NetworkManager {
         decoder.dateDecodingStrategy = .iso8601
     }
     
-    func getRepo(from urlString: String) async throws ->  Repository {
+    func getRepo(from urlString: String) async throws -> Repository {
         
         guard let url = URL(string: urlString) else {
             throw NetworkError.invalidRepoURL
         }
-        
-        print("Hello")
         
         let (data, response) = try await URLSession.shared.data(from: url)
         
