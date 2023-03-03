@@ -20,8 +20,6 @@ struct ContentView: View {
                     Task {
                         try await NetworkManager.shared.getRepo(from: publishURL)
                     }
-                } catch {
-                    print("❌ ERROR: \(error.localizedDescription)")
                 }
             }
         }
