@@ -44,10 +44,36 @@ struct RepoEntry: TimelineEntry {
 }
 
 struct RepoWatcherWidgetEntryView: View {
+    
+    @Environment(\.widgetFamily) var family
     var entry: RepoEntry
     
     var body: some View {
-        RepoMediumView(repo: entry.repo)
+        switch family {
+                
+            case .systemMedium:
+                RepoMediumView(repo: entry.repo)
+                
+            case .systemLarge:
+                VStack {
+                    RepoMediumView(repo: entry.repo)
+                    divider
+                    RepoMediumView(repo: entry.repo)
+                }
+                
+            case .systemSmall, .systemExtraLarge, .accessoryCorner, .accessoryCircular, .accessoryRectangular, .accessoryInline: EmptyView()
+                
+            @unknown default:
+                EmptyView()
+        }
+    }
+    
+    var divider: some View {
+        VStack(spacing: 0) {
+            Divider()
+            Divider()
+        }
+        .padding(.horizontal)
     }
 }
 
@@ -70,6 +96,6 @@ struct RepoWatcherWidget_Previews: PreviewProvider {
                                                     repo: Repository.placeholder,
                                                     avatarData: Data()))
         
-            .previewContext(WidgetPreviewContext(family: .systemMedium))
+        .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }
