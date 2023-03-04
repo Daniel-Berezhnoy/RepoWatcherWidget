@@ -22,6 +22,7 @@
 		B9F7283F29B1C09F007E8264 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F7283E29B1C09F007E8264 /* NetworkManager.swift */; };
 		B9F7284029B1C09F007E8264 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F7283E29B1C09F007E8264 /* NetworkManager.swift */; };
 		B9F7284329B1CE17007E8264 /* SwiftUIBuddy in Frameworks */ = {isa = PBXBuildFile; productRef = B9F7284229B1CE17007E8264 /* SwiftUIBuddy */; };
+		B9F7284829B401F0007E8264 /* RepoMediumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F7284729B401F0007E8264 /* RepoMediumView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		B9F7283329AFE5AA007E8264 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9F7283B29B14D98007E8264 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		B9F7283E29B1C09F007E8264 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		B9F7284729B401F0007E8264 /* RepoMediumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoMediumView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,10 +142,19 @@
 			children = (
 				B9F7282D29AFE5AA007E8264 /* RepoWatcherWidgetBundle.swift */,
 				B9F7282F29AFE5AA007E8264 /* RepoWatcherWidget.swift */,
+				B9F7284629B401C2007E8264 /* Components */,
 				B9F7283129AFE5AA007E8264 /* Assets.xcassets */,
 				B9F7283329AFE5AA007E8264 /* Info.plist */,
 			);
 			path = RepoWatcherWidget;
+			sourceTree = "<group>";
+		};
+		B9F7284629B401C2007E8264 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B9F7284729B401F0007E8264 /* RepoMediumView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,6 +277,7 @@
 			files = (
 				B9F7284029B1C09F007E8264 /* NetworkManager.swift in Sources */,
 				B9F7283029AFE5AA007E8264 /* RepoWatcherWidget.swift in Sources */,
+				B9F7284829B401F0007E8264 /* RepoMediumView.swift in Sources */,
 				B9F7282E29AFE5AA007E8264 /* RepoWatcherWidgetBundle.swift in Sources */,
 				B9F7283D29B14D98007E8264 /* Repository.swift in Sources */,
 			);
