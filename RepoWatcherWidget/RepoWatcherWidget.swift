@@ -23,7 +23,7 @@ struct Provider: TimelineProvider {
             let nextUpdate = Date().addingTimeInterval(43_200) // 12 hours = 43,200 seconds
             
             do {
-                let repo = try await NetworkManager.shared.getRepo(from: RepoURL.google)
+                let repo = try await NetworkManager.shared.getRepo(from: RepoURL.swiftUIBuddy)
                 let avatarImageData = await NetworkManager.shared.downloadImageData(from: repo.owner.avatarUrl)
                 
                 let entry = RepoEntry(date: .now, repo: repo, avatarData: avatarImageData)
@@ -69,6 +69,7 @@ struct RepoWatcherWidgetEntryView : View {
                 .scaledToFit()
                 .clipShape(Circle())
                 .frame(width: 50, height: 50)
+                .padding(.trailing, 2)
             
             Text(entry.repo.name)
                 .font(.title2)
@@ -78,11 +79,11 @@ struct RepoWatcherWidgetEntryView : View {
         }
     }
     
-    #warning("Style this")
     var description: some View {
         Text("\(entry.repo.description)")
             .font(.caption)
             .foregroundColor(.secondary)
+            .minimumScaleFactor(0.85)
             .padding(.leading, 2)
     }
     
