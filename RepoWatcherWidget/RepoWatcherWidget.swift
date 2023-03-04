@@ -62,9 +62,12 @@ struct RepoWatcherWidgetEntryView : View {
     
     var headline: some View {
         HStack {
-            Circle()
+            Image(uiImage: avatar)
+                .resizable()
+                .scaledToFit()
+                .clipShape(Circle())
                 .frame(width: 50, height: 50)
-            
+                
             Text(entry.repo.name)
                 .font(.title2)
                 .fontWeight(.semibold)
@@ -98,8 +101,8 @@ struct RepoWatcherWidgetEntryView : View {
         }
     }
     
-    var daysSinceLastActivity: Int {
-        calculateDaysSinceLastActivity(since: entry.repo.pushedAt)
+    var avatar: UIImage {
+        (UIImage(data: entry.avatarData) ?? UIImage(systemName: "person.crop.circle.fill"))!
     }
     
     var dynamicColor: Color {
@@ -112,6 +115,10 @@ struct RepoWatcherWidgetEntryView : View {
         } else {
             return .green
         }
+    }
+    
+    var daysSinceLastActivity: Int {
+        calculateDaysSinceLastActivity(since: entry.repo.pushedAt)
     }
     
     func calculateDaysSinceLastActivity(since dateString: String) -> Int {
@@ -139,7 +146,10 @@ struct RepoWatcherWidget: Widget {
 
 struct RepoWatcherWidget_Previews: PreviewProvider {
     static var previews: some View {
-        RepoWatcherWidgetEntryView(entry: RepoEntry(date: Date(), repo: Repository.placeholder, avatarData: Data()))
+        RepoWatcherWidgetEntryView(entry: RepoEntry(date: Date(),
+                                                    repo: Repository.placeholder,
+                                                    avatarData: Data()))
+        
             .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }
