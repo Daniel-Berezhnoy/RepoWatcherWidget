@@ -34,6 +34,17 @@ class NetworkManager {
             throw NetworkError.invalidRepoData
         }
     }
+    
+    func downloadImageData(from urlString: String) async -> Data {
+        guard let url = URL(string: urlString) else { return Data() }
+        
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            return data
+        } catch {
+            return Data()
+        }
+    }
 }
 
 enum NetworkError: Error {
@@ -43,8 +54,10 @@ enum NetworkError: Error {
 }
 
 enum RepoURL {
-    static let swiftUIBuddy = "https://github.com/Daniel-Berezhnoy/SwiftUIBuddy"
-    static let codeEdit = "https://github.com/CodeEditApp/CodeEdit"
-    static let setting = "https://github.com/aheze/Setting"
-    static let publish = "https://github.com/JohnSundell/Publish"
+    static let swiftUIBuddy = "https://api.github.com/repos/Daniel-Berezhnoy/SwiftUIBuddy"
+    static let codeEdit = "https://api.github.com/repos/CodeEditApp/CodeEdit"
+    static let setting = "https://api.github.com/repos/aheze/Setting"
+    static let swiftNews = "https://api.github.com/repos/sallen0400/swift-news"
+    static let publish = "https://api.github.com/repos/johnsundell/publish"
+    static let google = "https://api.github.com/repos/google/GoogleSignIn-iOS"
 }

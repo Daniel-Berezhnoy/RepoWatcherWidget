@@ -10,11 +10,11 @@ import SwiftUI
 
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> RepoEntry {
-        RepoEntry(date: Date(), repo: Repository.placeholder)
+        RepoEntry(date: Date(), repo: Repository.placeholder, avatarData: Data())
     }
     
     func getSnapshot(in context: Context, completion: @escaping (RepoEntry) -> ()) {
-        let entry = RepoEntry(date: Date(), repo: Repository.placeholder)
+        let entry = RepoEntry(date: Date(), repo: Repository.placeholder, avatarData: Data())
         completion(entry)
     }
     
@@ -23,10 +23,12 @@ struct Provider: TimelineProvider {
             let nextUpdate = Date().addingTimeInterval(43_200) // 12 hours = 43,200 seconds
             
             do {
-                let repo = try await NetworkManager.shared.getRepo(from: RepoURL.codeEdit)
-                let entry = RepoEntry(date: .now, repo: repo)
-
+                let repo = try await NetworkManager.shared.getRepo(from: RepoURL.swiftUIBuddy)
+                let avatarImageData = await NetworkManager.shared.downloadImageData(from: repo.owner.avatarUrl)
+                
+                let entry = RepoEntry(date: .now, repo: repo, avatarData: avatarImageData)
                 let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
+                
                 completion(timeline)
             } catch {
                 print("❌ ERROR: \(error.localizedDescription)")
@@ -38,6 +40,7 @@ struct Provider: TimelineProvider {
 struct RepoEntry: TimelineEntry {
     let date: Date
     let repo: Repository
+    let avatarData: Data
 }
 
 struct RepoWatcherWidgetEntryView : View {
@@ -47,7 +50,7 @@ struct RepoWatcherWidgetEntryView : View {
     
     var body: some View {
         HStack {
-            VStack {
+            VStack(alignment: .leading) {
                 headline
                 stats
             }
@@ -136,7 +139,7 @@ struct RepoWatcherWidget: Widget {
 
 struct RepoWatcherWidget_Previews: PreviewProvider {
     static var previews: some View {
-        RepoWatcherWidgetEntryView(entry: RepoEntry(date: Date(), repo: Repository.placeholder))
+        RepoWatcherWidgetEntryView(entry: RepoEntry(date: Date(), repo: Repository.placeholder, avatarData: Data()))
             .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }

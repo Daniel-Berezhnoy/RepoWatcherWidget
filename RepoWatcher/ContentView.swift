@@ -10,15 +10,13 @@ import SwiftUIBuddy
 
 struct ContentView: View {
     var body: some View {
-        
         let swiftUIBuddyURL = "https://github.com/Daniel-Berezhnoy/SwiftUIBuddy"
-        let publishURL = "https://github.com/JohnSundell/Publish"
         
         VStack {
             StandardButton("Fire off the Network Call 🚀") {
                 do {
                     Task {
-                        try await NetworkManager.shared.getRepo(from: publishURL)
+                        try await NetworkManager.shared.getRepo(from: swiftUIBuddyURL)
                     }
                 }
             }
