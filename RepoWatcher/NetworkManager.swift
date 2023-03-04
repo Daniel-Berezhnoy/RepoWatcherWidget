@@ -16,7 +16,6 @@ class NetworkManager {
         decoder.dateDecodingStrategy = .iso8601
     }
     
-    #error("Fix the Network Call")
     func getRepo(from urlString: String) async throws -> Repository {
         
         guard let url = URL(string: urlString) else {
