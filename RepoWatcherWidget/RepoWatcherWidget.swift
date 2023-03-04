@@ -64,6 +64,8 @@ struct RepoWatcherWidgetEntryView : View {
         HStack {
             Image(uiImage: avatar)
                 .resizable()
+                .renderingMode(.template)
+                .foregroundColor(.secondary)
                 .scaledToFit()
                 .clipShape(Circle())
                 .frame(width: 50, height: 50)
