@@ -9,6 +9,7 @@ import Foundation
 
 struct Repository: Decodable {
     let name: String
+    let description: String
     let owner: Owner
     let hasIssues: Bool
     
@@ -25,6 +26,7 @@ struct Owner: Decodable {
 
 extension Repository {
     static let placeholder = Repository(name: "Your Repository",
+                                        description: "A Library of Custom SwiftUI Components",
                                         owner: Owner(avatarUrl: ""),
                                         hasIssues: true,
                                         forks: 55,

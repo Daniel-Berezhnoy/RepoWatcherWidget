@@ -23,7 +23,7 @@ struct Provider: TimelineProvider {
             let nextUpdate = Date().addingTimeInterval(43_200) // 12 hours = 43,200 seconds
             
             do {
-                let repo = try await NetworkManager.shared.getRepo(from: RepoURL.swiftUIBuddy)
+                let repo = try await NetworkManager.shared.getRepo(from: RepoURL.google)
                 let avatarImageData = await NetworkManager.shared.downloadImageData(from: repo.owner.avatarUrl)
                 
                 let entry = RepoEntry(date: .now, repo: repo, avatarData: avatarImageData)
@@ -52,6 +52,8 @@ struct RepoWatcherWidgetEntryView : View {
         HStack {
             VStack(alignment: .leading) {
                 headline
+                description
+                Spacer()
                 stats
             }
             Spacer()
@@ -64,28 +66,35 @@ struct RepoWatcherWidgetEntryView : View {
         HStack {
             Image(uiImage: avatar)
                 .resizable()
-                .renderingMode(.template)
-                .foregroundColor(.secondary)
                 .scaledToFit()
                 .clipShape(Circle())
                 .frame(width: 50, height: 50)
-                
+            
             Text(entry.repo.name)
                 .font(.title2)
                 .fontWeight(.semibold)
                 .minimumScaleFactor(0.6)
                 .lineLimit(1)
         }
-        .padding(.bottom)
+    }
+    
+    #warning("Style this")
+    var description: some View {
+        Text("\(entry.repo.description)")
+            .font(.caption)
+            .foregroundColor(.secondary)
+            .padding(.leading, 2)
     }
     
     var stats: some View {
         HStack(spacing: 12) {
             StatLabel(value: entry.repo.watchers, systemImageName: "star.fill")
             StatLabel(value: entry.repo.forks , systemImageName: "tuningfork")
-            StatLabel(value: entry.repo.openIssues, systemImageName: "exclamationmark.triangle.fill")
+            if issuesAreEnabled {
+                StatLabel(value: entry.repo.openIssues,
+                          systemImageName: "exclamationmark.triangle.fill")
+            }
         }
-        
     }
     
     var daysSinceUpdated: some View {
@@ -121,6 +130,10 @@ struct RepoWatcherWidgetEntryView : View {
     
     var daysSinceLastActivity: Int {
         calculateDaysSinceLastActivity(since: entry.repo.pushedAt)
+    }
+    
+    var issuesAreEnabled: Bool {
+        entry.repo.hasIssues
     }
     
     func calculateDaysSinceLastActivity(since dateString: String) -> Int {
