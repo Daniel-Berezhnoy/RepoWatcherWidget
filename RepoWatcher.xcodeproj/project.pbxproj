@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B903F82729B51A6700208830 /* LargeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B903F82629B51A6700208830 /* LargeWidget.swift */; };
 		B9F7281529AFE49E007E8264 /* RepoWatcherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F7281429AFE49E007E8264 /* RepoWatcherApp.swift */; };
 		B9F7281729AFE49E007E8264 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F7281629AFE49E007E8264 /* ContentView.swift */; };
 		B9F7281929AFE49E007E8264 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9F7281829AFE49E007E8264 /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B903F82629B51A6700208830 /* LargeWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeWidget.swift; sourceTree = "<group>"; };
 		B9F7281129AFE49E007E8264 /* RepoWatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RepoWatcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9F7281429AFE49E007E8264 /* RepoWatcherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoWatcherApp.swift; sourceTree = "<group>"; };
 		B9F7281629AFE49E007E8264 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -88,6 +90,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B903F82529B51A3600208830 /* Widget Sizes */ = {
+			isa = PBXGroup;
+			children = (
+				B9F7282F29AFE5AA007E8264 /* MediumWidget.swift */,
+				B903F82629B51A6700208830 /* LargeWidget.swift */,
+			);
+			path = "Widget Sizes";
+			sourceTree = "<group>";
+		};
 		B9F7280829AFE49E007E8264 = {
 			isa = PBXGroup;
 			children = (
@@ -141,7 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				B9F7282D29AFE5AA007E8264 /* RepoWatcherWidgetBundle.swift */,
-				B9F7282F29AFE5AA007E8264 /* MediumWidget.swift */,
+				B903F82529B51A3600208830 /* Widget Sizes */,
 				B9F7284629B401C2007E8264 /* Components */,
 				B9F7283129AFE5AA007E8264 /* Assets.xcassets */,
 				B9F7283329AFE5AA007E8264 /* Info.plist */,
@@ -276,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9F7284029B1C09F007E8264 /* NetworkManager.swift in Sources */,
+				B903F82729B51A6700208830 /* LargeWidget.swift in Sources */,
 				B9F7283029AFE5AA007E8264 /* MediumWidget.swift in Sources */,
 				B9F7284829B401F0007E8264 /* RepoMediumView.swift in Sources */,
 				B9F7282E29AFE5AA007E8264 /* RepoWatcherWidgetBundle.swift in Sources */,
