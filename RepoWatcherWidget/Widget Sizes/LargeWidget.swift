@@ -33,3 +33,31 @@ struct LargeWidgetProvider: TimelineProvider {
 struct LargeWidgetEntry: TimelineEntry {
     let date: Date
 }
+
+struct LargeWidgetEntryView: View {
+    var entry: LargeWidgetEntry
+    
+    var body: some View {
+        Text(entry.date.formatted())
+    }
+}
+
+struct LargeWidget: Widget {
+    let kind: String = "LargeWidget"
+    
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: LargeWidgetProvider()) { entry in
+            LargeWidgetEntryView(entry: entry)
+        }
+        .configurationDisplayName("Repo Watcher+")
+        .description("Repo Watcher + Top Contributors")
+        .supportedFamilies([.systemLarge])
+    }
+}
+
+struct LargeWidget_Previews: PreviewProvider {
+    static var previews: some View {
+        LargeWidgetEntryView(entry: LargeWidgetEntry(date: .now))
+            .previewContext(WidgetPreviewContext(family: .systemExtraLarge))
+    }
+}

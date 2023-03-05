@@ -84,8 +84,8 @@ struct MediumWidget: Widget {
         StaticConfiguration(kind: kind, provider: MediumWidgetProvider()) { entry in
             MediumWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Repo Watcher")
+        .description("See the information about selected repo.")
         .supportedFamilies([.systemMedium, .systemLarge])
     }
 }
