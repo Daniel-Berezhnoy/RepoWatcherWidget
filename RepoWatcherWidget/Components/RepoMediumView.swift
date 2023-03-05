@@ -79,8 +79,7 @@ struct RepoMediumView: View {
     }
     
     var avatar: UIImage {
-//        (UIImage(data: avatarData) ?? UIImage(systemName: "person.crop.circle.fill"))!
-        UIImage(systemName: "person.crop.circle.fill")!
+        (UIImage(data: repo.avatarData) ?? UIImage(systemName: "person.crop.circle.fill"))!
     }
     
     var dynamicColor: Color {

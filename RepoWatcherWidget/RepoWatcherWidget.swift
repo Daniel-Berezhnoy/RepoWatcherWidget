@@ -10,11 +10,11 @@ import SwiftUI
 
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> RepoEntry {
-        RepoEntry(date: Date(), repo: Repository.placeholder, avatarData: Data())
+        RepoEntry(date: Date(), repo: Repository.placeholder)
     }
     
     func getSnapshot(in context: Context, completion: @escaping (RepoEntry) -> ()) {
-        let entry = RepoEntry(date: Date(), repo: Repository.placeholder, avatarData: Data())
+        let entry = RepoEntry(date: Date(), repo: Repository.placeholder)
         completion(entry)
     }
     
@@ -23,10 +23,11 @@ struct Provider: TimelineProvider {
             let nextUpdate = Date().addingTimeInterval(43_200) // 12 hours = 43,200 seconds
             
             do {
-                let repo = try await NetworkManager.shared.getRepo(from: RepoURL.swiftUIBuddy)
+                var repo = try await NetworkManager.shared.getRepo(from: RepoURL.swiftNews)
                 let avatarImageData = await NetworkManager.shared.downloadImageData(from: repo.owner.avatarUrl)
+                repo.avatarData = avatarImageData
                 
-                let entry = RepoEntry(date: .now, repo: repo, avatarData: avatarImageData)
+                let entry = RepoEntry(date: .now, repo: repo)
                 let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
                 
                 completion(timeline)
@@ -40,7 +41,6 @@ struct Provider: TimelineProvider {
 struct RepoEntry: TimelineEntry {
     let date: Date
     let repo: Repository
-    let avatarData: Data
 }
 
 struct RepoWatcherWidgetEntryView: View {
@@ -86,15 +86,13 @@ struct RepoWatcherWidget: Widget {
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")
-        .supportedFamilies([.systemMedium])
+        .supportedFamilies([.systemMedium, .systemLarge])
     }
 }
 
 struct RepoWatcherWidget_Previews: PreviewProvider {
     static var previews: some View {
-        RepoWatcherWidgetEntryView(entry: RepoEntry(date: Date(),
-                                                    repo: Repository.placeholder,
-                                                    avatarData: Data()))
+        RepoWatcherWidgetEntryView(entry: RepoEntry(date: Date(), repo: Repository.placeholder))
         
         .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
