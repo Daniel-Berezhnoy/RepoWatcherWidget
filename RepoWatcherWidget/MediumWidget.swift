@@ -1,6 +1,6 @@
 //
-//  RepoWatcherWidget.swift
-//  RepoWatcherWidget
+//  MediumWidget.swift
+//  MediumWidget
 //
 //  Created by Daniel Berezhnoy on 3/1/23.
 //
@@ -8,13 +8,13 @@
 import WidgetKit
 import SwiftUI
 
-struct Provider: TimelineProvider {
-    func placeholder(in context: Context) -> RepoEntry {
-        RepoEntry(date: Date(), repo: Repository.placeholder)
+struct MediumWidgetProvider: TimelineProvider {
+    func placeholder(in context: Context) -> MediumWidgetEntry {
+        MediumWidgetEntry(date: Date(), repo: Repository.placeholder)
     }
     
-    func getSnapshot(in context: Context, completion: @escaping (RepoEntry) -> ()) {
-        let entry = RepoEntry(date: Date(), repo: Repository.placeholder)
+    func getSnapshot(in context: Context, completion: @escaping (MediumWidgetEntry) -> ()) {
+        let entry = MediumWidgetEntry(date: Date(), repo: Repository.placeholder)
         completion(entry)
     }
     
@@ -23,11 +23,11 @@ struct Provider: TimelineProvider {
             let nextUpdate = Date().addingTimeInterval(43_200) // 12 hours = 43,200 seconds
             
             do {
-                var repo = try await NetworkManager.shared.getRepo(from: RepoURL.swiftNews)
+                var repo = try await NetworkManager.shared.getRepo(from: RepoURL.swiftUIBuddy)
                 let avatarImageData = await NetworkManager.shared.downloadImageData(from: repo.owner.avatarUrl)
                 repo.avatarData = avatarImageData
                 
-                let entry = RepoEntry(date: .now, repo: repo)
+                let entry = MediumWidgetEntry(date: .now, repo: repo)
                 let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
                 
                 completion(timeline)
@@ -38,15 +38,15 @@ struct Provider: TimelineProvider {
     }
 }
 
-struct RepoEntry: TimelineEntry {
+struct MediumWidgetEntry: TimelineEntry {
     let date: Date
     let repo: Repository
 }
 
-struct RepoWatcherWidgetEntryView: View {
+struct MediumWidgetEntryView: View {
     
     @Environment(\.widgetFamily) var family
-    var entry: RepoEntry
+    var entry: MediumWidgetEntry
     
     var body: some View {
         switch family {
@@ -77,12 +77,12 @@ struct RepoWatcherWidgetEntryView: View {
     }
 }
 
-struct RepoWatcherWidget: Widget {
-    let kind: String = "RepoWatcherWidget"
+struct MediumWidget: Widget {
+    let kind: String = "MediumWidget"
     
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            RepoWatcherWidgetEntryView(entry: entry)
+        StaticConfiguration(kind: kind, provider: MediumWidgetProvider()) { entry in
+            MediumWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")
@@ -90,10 +90,9 @@ struct RepoWatcherWidget: Widget {
     }
 }
 
-struct RepoWatcherWidget_Previews: PreviewProvider {
+struct MediumWidget_Previews: PreviewProvider {
     static var previews: some View {
-        RepoWatcherWidgetEntryView(entry: RepoEntry(date: Date(), repo: Repository.placeholder))
-        
-        .previewContext(WidgetPreviewContext(family: .systemMedium))
+        MediumWidgetEntryView(entry: MediumWidgetEntry(date: Date(), repo: Repository.placeholder))
+            .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }

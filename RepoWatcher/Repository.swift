@@ -27,7 +27,7 @@ struct Owner: Decodable {
 
 extension Repository {
     static let placeholder = Repository(name: "Your Repository",
-                                        description: "A Library of Custom SwiftUI Components",
+                                        description: "Description of the Repository",
                                         owner: Owner(avatarUrl: ""),
                                         hasIssues: true,
                                         forks: 55,
