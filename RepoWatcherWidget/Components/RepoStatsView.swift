@@ -1,5 +1,5 @@
 //
-//  RepoMediumView.swift
+//  RepoStatsView.swift
 //  RepoWatcherWidgetExtension
 //
 //  Created by Daniel Berezhnoy on 3/4/23.
@@ -8,7 +8,7 @@
 import SwiftUI
 import WidgetKit
 
-struct RepoMediumView: View {
+struct RepoStatsView: View {
     
     let repo: Repository
     let dateFormatter = ISO8601DateFormatter()
@@ -112,9 +112,9 @@ struct RepoMediumView: View {
     }
 }
 
-struct RepoMediumView_Previews: PreviewProvider {
+struct RepoStatsView_Previews: PreviewProvider {
     static var previews: some View {
-        RepoMediumView(repo: Repository.placeholder)
+        RepoStatsView(repo: Repository.placeholder)
             .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }

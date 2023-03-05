@@ -11,11 +11,11 @@ import SwiftUI
 struct LargeWidgetProvider: TimelineProvider {
     
     func placeholder(in context: Context) -> LargeWidgetEntry {
-        LargeWidgetEntry(date: .now)
+        LargeWidgetEntry(date: .now, repo: Repository.placeholder)
     }
     
     func getSnapshot(in context: Context, completion: @escaping (LargeWidgetEntry) -> Void) {
-        let entry = LargeWidgetEntry(date: .now)
+        let entry = LargeWidgetEntry(date: .now, repo: Repository.placeholder)
         completion(entry)
     }
     
@@ -23,7 +23,7 @@ struct LargeWidgetProvider: TimelineProvider {
         
         let nextUpdate = Date().addingTimeInterval(43_200) // 12 hours = 43,200 seconds
         
-        let entry = LargeWidgetEntry(date: .now)
+        let entry = LargeWidgetEntry(date: .now, repo: Repository.placeholder)
         let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
         
         completion(timeline)
@@ -32,6 +32,7 @@ struct LargeWidgetProvider: TimelineProvider {
 
 struct LargeWidgetEntry: TimelineEntry {
     let date: Date
+    let repo: Repository
 }
 
 struct LargeWidgetEntryView: View {
@@ -57,7 +58,7 @@ struct LargeWidget: Widget {
 
 struct LargeWidget_Previews: PreviewProvider {
     static var previews: some View {
-        LargeWidgetEntryView(entry: LargeWidgetEntry(date: .now))
+        LargeWidgetEntryView(entry: LargeWidgetEntry(date: .now, repo: Repository.placeholder))
             .previewContext(WidgetPreviewContext(family: .systemExtraLarge))
     }
 }
