@@ -44,36 +44,10 @@ struct MediumWidgetEntry: TimelineEntry {
 }
 
 struct MediumWidgetEntryView: View {
-    
-    @Environment(\.widgetFamily) var family
     var entry: MediumWidgetEntry
     
     var body: some View {
-        switch family {
-                
-            case .systemMedium:
-                RepoMediumView(repo: entry.repo)
-                
-            case .systemLarge:
-                VStack {
-                    RepoMediumView(repo: entry.repo)
-                    divider
-                    RepoMediumView(repo: entry.repo)
-                }
-                
-            case .systemSmall, .systemExtraLarge, .accessoryCorner, .accessoryCircular, .accessoryRectangular, .accessoryInline: EmptyView()
-                
-            @unknown default:
-                EmptyView()
-        }
-    }
-    
-    var divider: some View {
-        VStack(spacing: 0) {
-            Divider()
-            Divider()
-        }
-        .padding(.horizontal)
+        RepoMediumView(repo: entry.repo)
     }
 }
 
@@ -86,7 +60,7 @@ struct MediumWidget: Widget {
         }
         .configurationDisplayName("Repo Watcher")
         .description("See the information about selected repo.")
-        .supportedFamilies([.systemMedium, .systemLarge])
+        .supportedFamilies([.systemMedium])
     }
 }
 
