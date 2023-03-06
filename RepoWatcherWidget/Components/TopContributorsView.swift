@@ -15,6 +15,7 @@ struct TopContributorsView: View {
         VStack {
             title
             grid
+            Spacer()
         }
         .padding()
     }
@@ -84,6 +85,7 @@ struct ContributorRow: View {
     var name: some View {
         Text(username)
             .font(.caption)
+            .fontWeight(.medium)
             .lineLimit(1)
             .minimumScaleFactor(0.7)
     }
