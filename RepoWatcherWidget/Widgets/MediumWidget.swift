@@ -61,8 +61,8 @@ struct MediumWidget: Widget {
         StaticConfiguration(kind: kind, provider: MediumWidgetProvider()) { entry in
             MediumWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("Repo Watcher")
-        .description("See the information about selected repo.")
+        .configurationDisplayName("Repo Stats")
+        .description("See all the information about the repository.")
         .supportedFamilies([.systemMedium])
     }
 }

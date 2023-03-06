@@ -81,8 +81,8 @@ struct LargeWidget: Widget {
         StaticConfiguration(kind: kind, provider: LargeWidgetProvider()) { entry in
             LargeWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("Repo Watcher+")
-        .description("Repo Watcher + Top Contributors")
+        .configurationDisplayName("Top Contributors")
+        .description("Keep an eye on the repo stats + the top 4 contributors!")
         .supportedFamilies([.systemLarge])
     }
 }
