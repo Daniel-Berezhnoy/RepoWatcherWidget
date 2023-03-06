@@ -9,6 +9,9 @@ import WidgetKit
 import SwiftUI
 
 struct MediumWidgetProvider: TimelineProvider {
+    
+    let repoToShow = RepoURL.codeEdit
+    
     func placeholder(in context: Context) -> MediumWidgetEntry {
         MediumWidgetEntry(date: Date(), repo: Repository.placeholder)
     }
@@ -23,7 +26,7 @@ struct MediumWidgetProvider: TimelineProvider {
             let nextUpdate = Date().addingTimeInterval(43_200) // 12 hours = 43,200 seconds
             
             do {
-                var repo = try await NetworkManager.shared.getRepo(from: RepoURL.swiftUIBuddy)
+                var repo = try await NetworkManager.shared.getRepo(from: repoToShow)
                 let avatarImageData = await NetworkManager.shared.downloadImageData(from: repo.owner.avatarUrl)
                 repo.avatarData = avatarImageData
                 

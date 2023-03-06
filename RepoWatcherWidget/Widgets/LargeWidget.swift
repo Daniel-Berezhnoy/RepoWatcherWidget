@@ -10,6 +10,8 @@ import SwiftUI
 
 struct LargeWidgetProvider: TimelineProvider {
     
+    let repoToShow = RepoURL.codeEdit
+    
     func placeholder(in context: Context) -> LargeWidgetEntry {
         LargeWidgetEntry(date: .now, repo: Repository.placeholder)
     }
@@ -21,8 +23,6 @@ struct LargeWidgetProvider: TimelineProvider {
     
     func getTimeline(in context: Context, completion: @escaping (Timeline<LargeWidgetEntry>) -> Void) {
         Task {
-            // Declaring some properties
-            let repoToShow = RepoURL.codeEdit
             let nextUpdate = Date().addingTimeInterval(43_200) // 12 hours = 43,200 seconds
             
             do {
@@ -69,8 +69,6 @@ struct LargeWidgetEntryView: View {
     var body: some View {
         VStack {
             RepoStatsView(for: entry.repo)
-                .padding(.bottom)
-            
             TopContributorsView(for: entry.repo)
         }
     }
