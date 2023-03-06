@@ -5,6 +5,7 @@
 //  Created by Daniel Berezhnoy on 3/1/23.
 //
 
+#error("Try to make the repo configurable from the User Side")
 import WidgetKit
 import SwiftUI
 
