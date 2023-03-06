@@ -13,6 +13,7 @@
 		B9CAA56529B57070004246A8 /* Contributor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CAA56329B57070004246A8 /* Contributor.swift */; };
 		B9CAA56629B674BD004246A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9F7281829AFE49E007E8264 /* Assets.xcassets */; };
 		B9CAA56929B682E5004246A8 /* SmallWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CAA56729B682E5004246A8 /* SmallWidget.swift */; };
+		B9CAA56C29B6852C004246A8 /* LastUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CAA56A29B6852C004246A8 /* LastUpdateView.swift */; };
 		B9F7281529AFE49E007E8264 /* RepoWatcherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F7281429AFE49E007E8264 /* RepoWatcherApp.swift */; };
 		B9F7281729AFE49E007E8264 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F7281629AFE49E007E8264 /* ContentView.swift */; };
 		B9F7281929AFE49E007E8264 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9F7281829AFE49E007E8264 /* Assets.xcassets */; };
@@ -59,6 +60,7 @@
 		B9CAA55F29B56998004246A8 /* TopContributorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopContributorsView.swift; sourceTree = "<group>"; };
 		B9CAA56329B57070004246A8 /* Contributor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contributor.swift; sourceTree = "<group>"; };
 		B9CAA56729B682E5004246A8 /* SmallWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallWidget.swift; sourceTree = "<group>"; };
+		B9CAA56A29B6852C004246A8 /* LastUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastUpdateView.swift; sourceTree = "<group>"; };
 		B9F7281129AFE49E007E8264 /* RepoWatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RepoWatcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9F7281429AFE49E007E8264 /* RepoWatcherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoWatcherApp.swift; sourceTree = "<group>"; };
 		B9F7281629AFE49E007E8264 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 		B9F7284629B401C2007E8264 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B9CAA56A29B6852C004246A8 /* LastUpdateView.swift */,
 				B9F7284729B401F0007E8264 /* RepoStatsView.swift */,
 				B9CAA55F29B56998004246A8 /* TopContributorsView.swift */,
 			);
@@ -308,6 +311,7 @@
 				B9CAA56929B682E5004246A8 /* SmallWidget.swift in Sources */,
 				B9F7283029AFE5AA007E8264 /* MediumWidget.swift in Sources */,
 				B9F7284829B401F0007E8264 /* RepoStatsView.swift in Sources */,
+				B9CAA56C29B6852C004246A8 /* LastUpdateView.swift in Sources */,
 				B9F7282E29AFE5AA007E8264 /* RepoWatcherWidgetBundle.swift in Sources */,
 				B9F7283D29B14D98007E8264 /* Repository.swift in Sources */,
 				B9CAA56029B56998004246A8 /* TopContributorsView.swift in Sources */,

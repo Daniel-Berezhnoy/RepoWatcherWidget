@@ -46,12 +46,11 @@ struct SmallWidgetEntry: TimelineEntry {
     let repo: Repository
 }
 
-#warning("Change the UI")
 struct SmallWidgetEntryView: View {
     var entry: SmallWidgetEntry
     
     var body: some View {
-        RepoStatsView(for: entry.repo)
+        LastUpdateView(for: entry.repo)
     }
 }
 
