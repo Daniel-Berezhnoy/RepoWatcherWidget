@@ -11,6 +11,7 @@
 		B9CAA56029B56998004246A8 /* TopContributorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CAA55F29B56998004246A8 /* TopContributorsView.swift */; };
 		B9CAA56429B57070004246A8 /* Contributor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CAA56329B57070004246A8 /* Contributor.swift */; };
 		B9CAA56529B57070004246A8 /* Contributor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CAA56329B57070004246A8 /* Contributor.swift */; };
+		B9CAA56629B674BD004246A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9F7281829AFE49E007E8264 /* Assets.xcassets */; };
 		B9F7281529AFE49E007E8264 /* RepoWatcherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F7281429AFE49E007E8264 /* RepoWatcherApp.swift */; };
 		B9F7281729AFE49E007E8264 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F7281629AFE49E007E8264 /* ContentView.swift */; };
 		B9F7281929AFE49E007E8264 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9F7281829AFE49E007E8264 /* Assets.xcassets */; };
@@ -275,6 +276,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9CAA56629B674BD004246A8 /* Assets.xcassets in Resources */,
 				B9F7283229AFE5AA007E8264 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

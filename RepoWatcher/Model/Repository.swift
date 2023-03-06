@@ -35,7 +35,13 @@ extension Repository {
                                         watchers: 123,
                                         openIssues: 27,
                                         pushedAt: "2023-02-24T19:20:53Z",
-                                        avatarData: Data())
+                                        avatarData: Data(),
+                                        contributors: contributors)
+    
+    static let contributors = [Contributor(login: "Daniel B", avatarUrl: "", contributions: 42, avatarData: Data()),
+                               Contributor(login: "Sean Allen", avatarUrl: "", contributions: 37, avatarData: Data()),
+                               Contributor(login: "Arthur G", avatarUrl: "", contributions: 29, avatarData: Data()),
+                               Contributor(login: "Steve Jobs", avatarUrl: "", contributions: 11, avatarData: Data())]
 }
 
 extension Repository {

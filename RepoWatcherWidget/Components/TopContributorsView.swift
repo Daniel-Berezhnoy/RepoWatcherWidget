@@ -74,11 +74,11 @@ struct ContributorRow: View {
     }
     
     var avatar: some View {
-        Image(uiImage: UIImage(data: avatarData) ?? UIImage(systemName: "person.crop.circle.fill")!)
+        Image(uiImage: UIImage(data: avatarData) ?? UIImage(named: "avatar")!)
             .resizable()
             .scaledToFit()
+            .clipShape(Circle())
             .frame(width: 44, height: 44)
-            .foregroundStyle(.gray.opacity(0.6))
     }
     
     var name: some View {

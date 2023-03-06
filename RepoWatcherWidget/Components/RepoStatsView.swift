@@ -79,7 +79,7 @@ struct RepoStatsView: View {
     }
     
     var avatar: UIImage {
-        (UIImage(data: repo.avatarData) ?? UIImage(systemName: "person.crop.circle.fill"))!
+        (UIImage(data: repo.avatarData) ?? UIImage(named: "avatar"))!
     }
     
     var dynamicColor: Color {
