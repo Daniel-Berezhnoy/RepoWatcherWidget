@@ -43,7 +43,7 @@ struct LargeWidgetEntryView: View {
             RepoStatsView(repo: entry.repo)
                 .padding(.bottom)
             
-            TopContributorsView()
+            TopContributorsView(repo: entry.repo)
         }
     }
 }
