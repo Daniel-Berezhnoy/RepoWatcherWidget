@@ -14,28 +14,17 @@ struct LastUpdateView: View {
     
     var body: some View {
         VStack {
-            HStack {
-//                avatar
-                headline
-            }
+            repoName
             daysSinceUpdated
             daysAgo
         }
         .padding()
     }
     
-    var avatar: some View {
-        Image(uiImage: avatarData)
-            .resizable()
-            .scaledToFit()
-            .clipShape(Circle())
-            .frame(width: 30, height: 30)
-    }
-    
-    var headline: some View {
+    var repoName: some View {
         Text(repo.name)
-            .font(.caption)
-            .fontWeight(.medium)
+//            .font(.body)
+            .fontWeight(.semibold)
             .minimumScaleFactor(0.6)
             .lineLimit(1)
     }
