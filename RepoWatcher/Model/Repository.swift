@@ -19,6 +19,7 @@ struct Repository {
     
     let pushedAt: String
     var avatarData: Data
+    var contributors: [Contributor] = []
 }
 
 struct Owner: Decodable {

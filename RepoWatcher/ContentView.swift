@@ -14,11 +14,7 @@ struct ContentView: View {
         
         VStack {
             StandardButton("Fire off the Network Call 🚀") {
-                do {
-                    Task {
-                        try await NetworkManager.shared.getRepo(from: swiftUIBuddyURL)
-                    }
-                }
+                Task { try await NetworkManager.shared.getRepo(from: swiftUIBuddyURL) }
             }
         }
         .padding(.horizontal, 25)

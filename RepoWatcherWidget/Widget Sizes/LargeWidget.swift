@@ -39,7 +39,12 @@ struct LargeWidgetEntryView: View {
     var entry: LargeWidgetEntry
     
     var body: some View {
-        Text(entry.date.formatted())
+        VStack {
+            RepoStatsView(repo: entry.repo)
+                .padding(.bottom)
+            
+            TopContributorsView()
+        }
     }
 }
 
