@@ -43,11 +43,15 @@ struct TopContributorsView: View {
     }
     
     let gridColumns = Array(repeating: GridItem(.flexible()), count: 2)
+    
+    init(for repo: Repository) {
+        self.repo = repo
+    }
 }
 
 struct TopContributorsView_Previews: PreviewProvider {
     static var previews: some View {
-        TopContributorsView(repo: Repository.placeholder)
+        TopContributorsView(for: Repository.placeholder)
             .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }
@@ -78,7 +82,7 @@ struct ContributorRow: View {
     }
     
     var name: some View {
-        Text("\(username)")
+        Text(username)
             .font(.caption)
             .lineLimit(1)
             .minimumScaleFactor(0.7)

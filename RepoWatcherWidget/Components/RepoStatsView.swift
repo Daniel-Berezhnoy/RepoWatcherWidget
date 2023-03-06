@@ -110,11 +110,15 @@ struct RepoStatsView: View {
                                                                     to: .now)
         return timeSinceLastActivity.day ?? 0
     }
+    
+    init(for repo: Repository) {
+        self.repo = repo
+    }
 }
 
 struct RepoStatsView_Previews: PreviewProvider {
     static var previews: some View {
-        RepoStatsView(repo: Repository.placeholder)
+        RepoStatsView(for: Repository.placeholder)
             .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }

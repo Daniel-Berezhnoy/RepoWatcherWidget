@@ -47,7 +47,7 @@ struct MediumWidgetEntryView: View {
     var entry: MediumWidgetEntry
     
     var body: some View {
-        RepoStatsView(repo: entry.repo)
+        RepoStatsView(for: entry.repo)
     }
 }
 

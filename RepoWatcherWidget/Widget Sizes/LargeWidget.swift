@@ -40,10 +40,10 @@ struct LargeWidgetEntryView: View {
     
     var body: some View {
         VStack {
-            RepoStatsView(repo: entry.repo)
+            RepoStatsView(for: entry.repo)
                 .padding(.bottom)
             
-            TopContributorsView(repo: entry.repo)
+            TopContributorsView(for: entry.repo)
         }
     }
 }
