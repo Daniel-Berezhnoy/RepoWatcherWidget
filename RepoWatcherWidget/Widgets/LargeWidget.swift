@@ -20,13 +20,41 @@ struct LargeWidgetProvider: TimelineProvider {
     }
     
     func getTimeline(in context: Context, completion: @escaping (Timeline<LargeWidgetEntry>) -> Void) {
-        
-        let nextUpdate = Date().addingTimeInterval(43_200) // 12 hours = 43,200 seconds
-        
-        let entry = LargeWidgetEntry(date: .now, repo: Repository.placeholder)
-        let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
-        
-        completion(timeline)
+        Task {
+            // Declaring some properties
+            let repoToShow = RepoURL.codeEdit
+            let nextUpdate = Date().addingTimeInterval(43_200) // 12 hours = 43,200 seconds
+            
+            do {
+                // Get Repo
+                var repo = try await NetworkManager.shared.getRepo(from: repoToShow)
+                let avatarImageData = await NetworkManager.shared.downloadImageData(from: repo.owner.avatarUrl)
+                repo.avatarData = avatarImageData
+                
+                // Get the Top 4 Contributors
+                let contributors = try await NetworkManager.shared.getContributors(from: repoToShow + "/contributors")
+                var topContributors = Array(contributors.prefix(4))
+                
+                // Download the top 4 Avatars
+                for i in topContributors.indices {
+                    let avatarData = await NetworkManager.shared.downloadImageData(from: topContributors[i].avatarUrl)
+                    topContributors[i].avatarData = avatarData
+                }
+                
+                // Setting the values for Top Contributors
+                repo.contributors = topContributors
+                
+                // Create Entry & Timeline
+                let entry = LargeWidgetEntry(date: .now, repo: repo)
+                let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
+                
+                // Call completion handler on the Timeline
+                completion(timeline)
+                
+            } catch {
+                print("❌ ERROR: \(error.localizedDescription)")
+            }
+        }
     }
 }
 
