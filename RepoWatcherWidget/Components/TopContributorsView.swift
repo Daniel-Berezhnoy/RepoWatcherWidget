@@ -33,7 +33,7 @@ struct TopContributorsView: View {
     
     var grid: some View {
         LazyVGrid(columns: gridColumns, alignment: .leading, spacing: 20) {
-            ForEach(repo.contributors) { contributor in
+            ForEach(repo.contributors, id: \.login) { contributor in
                 
                 ContributorRow(username: contributor.login,
                                avatarData: contributor.avatarData,

@@ -93,13 +93,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B903F82529B51A3600208830 /* Widget Sizes */ = {
+		B903F82529B51A3600208830 /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
 				B9F7282F29AFE5AA007E8264 /* MediumWidget.swift */,
 				B903F82629B51A6700208830 /* LargeWidget.swift */,
 			);
-			path = "Widget Sizes";
+			path = Widgets;
 			sourceTree = "<group>";
 		};
 		B9CAA56129B5703B004246A8 /* Managers */ = {
@@ -163,7 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				B9F7282D29AFE5AA007E8264 /* RepoWatcherWidgetBundle.swift */,
-				B903F82529B51A3600208830 /* Widget Sizes */,
+				B903F82529B51A3600208830 /* Widgets */,
 				B9F7284629B401C2007E8264 /* Components */,
 				B9F7283129AFE5AA007E8264 /* Assets.xcassets */,
 				B9F7283329AFE5AA007E8264 /* Info.plist */,

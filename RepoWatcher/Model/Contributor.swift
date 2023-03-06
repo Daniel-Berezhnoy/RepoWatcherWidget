@@ -7,8 +7,7 @@
 
 import Foundation
 
-struct Contributor: Identifiable {
-    let id = UUID()
+struct Contributor {
     let login: String
     let avatarUrl: String
     let contributions: Int
