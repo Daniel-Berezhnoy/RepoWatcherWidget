@@ -10,7 +10,8 @@ import SwiftUI
 
 struct LargeWidgetProvider: TimelineProvider {
     
-    let repoToShow = RepoURL.codeEdit
+//    let repoToShow = RepoURL.codeEdit
+    let repoToShow = NetworkManager.shared.selectedRepoURL
     
     func placeholder(in context: Context) -> LargeWidgetEntry {
         LargeWidgetEntry(date: .now, repo: Repository.placeholder)

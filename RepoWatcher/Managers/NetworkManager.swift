@@ -11,7 +11,7 @@ class NetworkManager {
     
     static let shared = NetworkManager()
     let decoder = JSONDecoder()
-//    let selectedRepoURL = "https://api.github.com/repos/Daniel-Berezhnoy/SwiftUIBuddy"
+    let selectedRepoURL = RepoURL.swiftUIBuddy
     
     func getRepo(from urlString: String) async throws -> Repository {
         

@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B903F82729B51A6700208830 /* LargeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B903F82629B51A6700208830 /* LargeWidget.swift */; };
-		B963F73229BD2DB400E0F75D /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B963F73129BD2DB400E0F75D /* ContentViewModel.swift */; };
-		B963F73329BD2DB400E0F75D /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B963F73129BD2DB400E0F75D /* ContentViewModel.swift */; };
 		B9CAA56029B56998004246A8 /* TopContributorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CAA55F29B56998004246A8 /* TopContributorsView.swift */; };
 		B9CAA56429B57070004246A8 /* Contributor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CAA56329B57070004246A8 /* Contributor.swift */; };
 		B9CAA56529B57070004246A8 /* Contributor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CAA56329B57070004246A8 /* Contributor.swift */; };
@@ -59,7 +57,8 @@
 
 /* Begin PBXFileReference section */
 		B903F82629B51A6700208830 /* LargeWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeWidget.swift; sourceTree = "<group>"; };
-		B963F73129BD2DB400E0F75D /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		B963F73729BD350400E0F75D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B963F74129BD3CD100E0F75D /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		B9CAA55F29B56998004246A8 /* TopContributorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopContributorsView.swift; sourceTree = "<group>"; };
 		B9CAA56329B57070004246A8 /* Contributor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contributor.swift; sourceTree = "<group>"; };
 		B9CAA56729B682E5004246A8 /* SmallWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallWidget.swift; sourceTree = "<group>"; };
@@ -150,9 +149,9 @@
 		B9F7281329AFE49E007E8264 /* RepoWatcher */ = {
 			isa = PBXGroup;
 			children = (
+				B963F73729BD350400E0F75D /* Info.plist */,
 				B9F7281429AFE49E007E8264 /* RepoWatcherApp.swift */,
 				B9F7281629AFE49E007E8264 /* ContentView.swift */,
-				B963F73129BD2DB400E0F75D /* ContentViewModel.swift */,
 				B9CAA56229B57046004246A8 /* Model */,
 				B9CAA56129B5703B004246A8 /* Managers */,
 				B9F7281829AFE49E007E8264 /* Assets.xcassets */,
@@ -165,6 +164,7 @@
 			children = (
 				B9F7282829AFE5AA007E8264 /* WidgetKit.framework */,
 				B9F7282A29AFE5AA007E8264 /* SwiftUI.framework */,
+				B963F74129BD3CD100E0F75D /* Intents.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -300,7 +300,6 @@
 			files = (
 				B9F7283F29B1C09F007E8264 /* NetworkManager.swift in Sources */,
 				B9CAA56429B57070004246A8 /* Contributor.swift in Sources */,
-				B963F73229BD2DB400E0F75D /* ContentViewModel.swift in Sources */,
 				B9F7281729AFE49E007E8264 /* ContentView.swift in Sources */,
 				B9F7281529AFE49E007E8264 /* RepoWatcherApp.swift in Sources */,
 				B9F7283C29B14D98007E8264 /* Repository.swift in Sources */,
@@ -318,7 +317,6 @@
 				B9F7284829B401F0007E8264 /* RepoStatsView.swift in Sources */,
 				B9CAA56C29B6852C004246A8 /* LastUpdateView.swift in Sources */,
 				B9F7282E29AFE5AA007E8264 /* RepoWatcherWidgetBundle.swift in Sources */,
-				B963F73329BD2DB400E0F75D /* ContentViewModel.swift in Sources */,
 				B9F7283D29B14D98007E8264 /* Repository.swift in Sources */,
 				B9CAA56029B56998004246A8 /* TopContributorsView.swift in Sources */,
 				B9CAA56529B57070004246A8 /* Contributor.swift in Sources */,
@@ -462,6 +460,7 @@
 				DEVELOPMENT_TEAM = 6ADU7T5Q7V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RepoWatcher/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -492,6 +491,7 @@
 				DEVELOPMENT_TEAM = 6ADU7T5Q7V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RepoWatcher/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

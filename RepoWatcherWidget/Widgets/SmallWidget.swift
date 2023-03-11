@@ -10,7 +10,8 @@ import SwiftUI
 
 struct SmallWidgetProvider: TimelineProvider {
     
-    let repoToShow = RepoURL.codeEdit
+//    let repoToShow = RepoURL.codeEdit
+    let repoToShow = NetworkManager.shared.selectedRepoURL
     
     func placeholder(in context: Context) -> SmallWidgetEntry {
         SmallWidgetEntry(date: Date(), repo: Repository.placeholder)
