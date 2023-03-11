@@ -8,13 +8,10 @@
 import Foundation
 
 class NetworkManager {
+    
     static let shared = NetworkManager()
     let decoder = JSONDecoder()
-    
-    private init() {
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        decoder.dateDecodingStrategy = .iso8601
-    }
+//    let selectedRepoURL = "https://api.github.com/repos/Daniel-Berezhnoy/SwiftUIBuddy"
     
     func getRepo(from urlString: String) async throws -> Repository {
         
@@ -67,6 +64,11 @@ class NetworkManager {
         } catch {
             return Data()
         }
+    }
+    
+    private init() {
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .iso8601
     }
 }
 

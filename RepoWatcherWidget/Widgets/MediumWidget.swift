@@ -10,7 +10,8 @@ import SwiftUI
 
 struct MediumWidgetProvider: TimelineProvider {
     
-    let repoToShow = RepoURL.codeEdit
+//    @EnvironmentObject private var viewModel: ContentViewModel
+    let repoToShow = RepoURL.swiftUIBuddy
     
     func placeholder(in context: Context) -> MediumWidgetEntry {
         MediumWidgetEntry(date: Date(), repo: Repository.placeholder)
