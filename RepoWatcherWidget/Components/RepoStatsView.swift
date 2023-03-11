@@ -79,7 +79,7 @@ struct RepoStatsView: View {
     }
     
     var avatar: UIImage {
-        (UIImage(data: repo.avatarData) ?? UIImage(named: "avatar"))!
+        UIImage(data: repo.avatarData) ?? UIImage(named: "avatar")!
     }
     
     var dynamicColor: Color {
