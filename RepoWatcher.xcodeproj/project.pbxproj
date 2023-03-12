@@ -11,6 +11,9 @@
 		B963F79929BDAC2400E0F75D /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B963F74129BD3CD100E0F75D /* Intents.framework */; };
 		B963F79C29BDAC2400E0F75D /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B963F79B29BDAC2400E0F75D /* IntentHandler.swift */; };
 		B963F7A029BDAC2400E0F75D /* WidgetIntents.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B963F79829BDAC2400E0F75D /* WidgetIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B963F7A529BDACFB00E0F75D /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B963F7A429BDACFB00E0F75D /* Intents.intentdefinition */; };
+		B963F7A629BDAD0300E0F75D /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B963F7A429BDACFB00E0F75D /* Intents.intentdefinition */; };
+		B963F7A729BDAD0300E0F75D /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B963F7A429BDACFB00E0F75D /* Intents.intentdefinition */; };
 		B9CAA56029B56998004246A8 /* TopContributorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CAA55F29B56998004246A8 /* TopContributorsView.swift */; };
 		B9CAA56429B57070004246A8 /* Contributor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CAA56329B57070004246A8 /* Contributor.swift */; };
 		B9CAA56529B57070004246A8 /* Contributor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CAA56329B57070004246A8 /* Contributor.swift */; };
@@ -73,6 +76,7 @@
 		B963F79829BDAC2400E0F75D /* WidgetIntents.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetIntents.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		B963F79B29BDAC2400E0F75D /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		B963F79D29BDAC2400E0F75D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B963F7A429BDACFB00E0F75D /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
 		B9CAA55F29B56998004246A8 /* TopContributorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopContributorsView.swift; sourceTree = "<group>"; };
 		B9CAA56329B57070004246A8 /* Contributor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contributor.swift; sourceTree = "<group>"; };
 		B9CAA56729B682E5004246A8 /* SmallWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallWidget.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 			children = (
 				B963F79B29BDAC2400E0F75D /* IntentHandler.swift */,
 				B963F79D29BDAC2400E0F75D /* Info.plist */,
+				B963F7A429BDACFB00E0F75D /* Intents.intentdefinition */,
 			);
 			path = WidgetIntents;
 			sourceTree = "<group>";
@@ -360,6 +365,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B963F7A529BDACFB00E0F75D /* Intents.intentdefinition in Sources */,
 				B963F79C29BDAC2400E0F75D /* IntentHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,6 +374,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B963F7A729BDAD0300E0F75D /* Intents.intentdefinition in Sources */,
 				B9F7283F29B1C09F007E8264 /* NetworkManager.swift in Sources */,
 				B9CAA56429B57070004246A8 /* Contributor.swift in Sources */,
 				B9F7281729AFE49E007E8264 /* ContentView.swift in Sources */,
@@ -383,6 +390,7 @@
 				B9F7284029B1C09F007E8264 /* NetworkManager.swift in Sources */,
 				B903F82729B51A6700208830 /* LargeWidget.swift in Sources */,
 				B9CAA56929B682E5004246A8 /* SmallWidget.swift in Sources */,
+				B963F7A629BDAD0300E0F75D /* Intents.intentdefinition in Sources */,
 				B9F7283029AFE5AA007E8264 /* MediumWidget.swift in Sources */,
 				B9F7284829B401F0007E8264 /* RepoStatsView.swift in Sources */,
 				B9CAA56C29B6852C004246A8 /* LastUpdateView.swift in Sources */,
