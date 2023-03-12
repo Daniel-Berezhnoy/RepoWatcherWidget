@@ -9,31 +9,30 @@ import WidgetKit
 import SwiftUI
 
 struct MediumWidgetProvider: TimelineProvider {
-    
-//    let repoToShow = RepoURL.swiftUIBuddy
+
     let repoToShow = NetworkManager.shared.selectedRepoURL
-    
+
     func placeholder(in context: Context) -> MediumWidgetEntry {
         MediumWidgetEntry(date: Date(), repo: Repository.placeholder)
     }
-    
+
     func getSnapshot(in context: Context, completion: @escaping (MediumWidgetEntry) -> ()) {
         let entry = MediumWidgetEntry(date: Date(), repo: Repository.placeholder)
         completion(entry)
     }
-    
+
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         Task {
             let nextUpdate = Date().addingTimeInterval(43_200) // 12 hours = 43,200 seconds
-            
+
             do {
                 var repo = try await NetworkManager.shared.getRepo(from: repoToShow)
                 let avatarImageData = await NetworkManager.shared.downloadImageData(from: repo.owner.avatarUrl)
                 repo.avatarData = avatarImageData
-                
+
                 let entry = MediumWidgetEntry(date: .now, repo: repo)
                 let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
-                
+
                 completion(timeline)
             } catch {
                 print("❌ ERROR: \(error.localizedDescription)")
