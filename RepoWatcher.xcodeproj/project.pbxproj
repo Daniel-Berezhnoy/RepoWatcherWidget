@@ -14,6 +14,7 @@
 		B963F7A529BDACFB00E0F75D /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B963F7A429BDACFB00E0F75D /* Intents.intentdefinition */; };
 		B963F7A629BDAD0300E0F75D /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B963F7A429BDACFB00E0F75D /* Intents.intentdefinition */; };
 		B963F7A729BDAD0300E0F75D /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B963F7A429BDACFB00E0F75D /* Intents.intentdefinition */; };
+		B963F7A829BDAE3900E0F75D /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B963F79B29BDAC2400E0F75D /* IntentHandler.swift */; };
 		B9CAA56029B56998004246A8 /* TopContributorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CAA55F29B56998004246A8 /* TopContributorsView.swift */; };
 		B9CAA56429B57070004246A8 /* Contributor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CAA56329B57070004246A8 /* Contributor.swift */; };
 		B9CAA56529B57070004246A8 /* Contributor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CAA56329B57070004246A8 /* Contributor.swift */; };
@@ -397,6 +398,7 @@
 				B9F7282E29AFE5AA007E8264 /* RepoWatcherWidgetBundle.swift in Sources */,
 				B9F7283D29B14D98007E8264 /* Repository.swift in Sources */,
 				B9CAA56029B56998004246A8 /* TopContributorsView.swift in Sources */,
+				B963F7A829BDAE3900E0F75D /* IntentHandler.swift in Sources */,
 				B9CAA56529B57070004246A8 /* Contributor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
