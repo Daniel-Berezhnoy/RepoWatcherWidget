@@ -16,6 +16,10 @@ extension RepoListView {
         @Published var alertMessage = ""
         @Published var showingAlert = false
         
+        var repoNameIsEmpty: Bool {
+            newRepo.trimmingCharacters(in: .whitespaces).isEmpty
+        }
+        
         func appendRepos(with newRepo: String) {
             repos.append(newRepo)
             UserDefaults.shared.set(repos, forKey: UserDefaults.repoKey)
