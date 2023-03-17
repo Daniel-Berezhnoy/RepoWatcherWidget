@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  RepoListView.swift
 //  RepoWatcher
 //
 //  Created by Daniel Berezhnoy on 3/1/23.
@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftUIBuddy
 
-struct ContentView: View {
+struct RepoListView: View {
     
     @State private var newRepo = ""
     @State private var repos: [String] = []
@@ -21,7 +21,7 @@ struct ContentView: View {
             }
             .navigationTitle("Repo List")
         }
-        .onAppear { aaa() }
+        .onAppear { retrieveSavedRepos() }
     }
     
     var addRepoField: some View {
@@ -79,7 +79,7 @@ struct ContentView: View {
         self.newRepo.removeAll()
     }
     
-    func aaa() {
+    func retrieveSavedRepos() {
         guard let retrievedRepos = UserDefaults.shared.value(forKey: UserDefaults.repoKey) as? [String] else {
             
             let defaultRepos = ["Daniel-Berezhnoy/SwiftUIBuddy"]
@@ -93,8 +93,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct RepoList_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        RepoListView()
     }
 }
