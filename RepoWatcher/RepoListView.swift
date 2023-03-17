@@ -9,12 +9,7 @@ import SwiftUI
 import SwiftUIBuddy
 
 struct RepoListView: View {
-    
-    @State private var newRepo = ""
-    @State private var repos: [String] = []
-    
-    @State private var showingAlert = false
-    @State private var alertMessage = ""
+    @StateObject private var viewModel = RepoListViewModel()
     
     var body: some View {
         NavigationStack {
@@ -24,38 +19,38 @@ struct RepoListView: View {
             }
             .navigationTitle("Repo List")
         }
-        .onAppear { retrieveSavedRepos() }
+        .onAppear { viewModel.retrieveSavedRepos() }
         
-        .alert("Error", isPresented: $showingAlert) {
+        .alert("Error", isPresented: $viewModel.showingAlert) {
             Button("Ok") {}
         } message: {
-            Text(alertMessage)
+            Text(viewModel.alertMessage)
         }
     }
     
     var addRepoField: some View {
         HStack {
-            TextField("Ex. sallen0400/swift-news", text: $newRepo)
+            TextField("Ex. sallen0400/swift-news", text: $viewModel.newRepo)
                 .autocapitalization(.none)
                 .autocorrectionDisabled()
                 .textFieldStyle(.roundedBorder)
                 .onSubmit {
-                    if repos.contains(newRepo) {
-                        presentAlert("\(newRepo) was already saved.")
+                    if viewModel.repos.contains(viewModel.newRepo) {
+                        viewModel.presentAlert("\(viewModel.newRepo) was already saved.")
                         
                     } else if repoNameIsEmpty{
-                        presentAlert("Please enter the repo name and try again")
+                        viewModel.presentAlert("Please enter the repo name and try again")
                         
                     } else {
-                        withAnimation { appendRepos(with: newRepo) }
+                        withAnimation { viewModel.appendRepos(with: viewModel.newRepo) }
                     }
                 }
 
             Button {
-                if repos.contains(newRepo) {
-                    presentAlert("\(newRepo) was already saved.")
+                if viewModel.repos.contains(viewModel.newRepo) {
+                    viewModel.presentAlert("\(viewModel.newRepo) was already saved.")
                 } else {
-                    withAnimation { appendRepos(with: newRepo) }
+                    withAnimation { viewModel.appendRepos(with: viewModel.newRepo) }
                 }
                 
             } label: {
@@ -77,17 +72,17 @@ struct RepoListView: View {
                 .foregroundColor(.secondary)
                 .padding(.leading)
             
-            List(repos, id: \.self) { repo in
+            List(viewModel.repos, id: \.self) { repo in
                 Text(repo)
                     .swipeActions {
                         Button("Delete") {
-                            if repos.count > 1 {
+                            if viewModel.repos.count > 1 {
                                 withAnimation {
-                                    repos.removeAll { $0 == repo }
-                                    UserDefaults.shared.set(repos, forKey: UserDefaults.repoKey)
+                                    viewModel.repos.removeAll { $0 == repo }
+                                    UserDefaults.shared.set(viewModel.repos, forKey: UserDefaults.repoKey)
                                 }
                             } else {
-                                presentAlert("You need to have at least one repo.")
+                                viewModel.presentAlert("You need to have at least one repo.")
                             }
                         }
                         .tint(.red)
@@ -97,32 +92,7 @@ struct RepoListView: View {
     }
     
     var repoNameIsEmpty: Bool {
-        newRepo.trimmingCharacters(in: .whitespaces).isEmpty
-    }
-    
-    func appendRepos(with newRepo: String) {
-        repos.append(newRepo)
-        UserDefaults.shared.set(repos, forKey: UserDefaults.repoKey)
-        self.newRepo.removeAll()
-    }
-    
-    func retrieveSavedRepos() {
-        guard let retrievedRepos = UserDefaults.shared.value(forKey: UserDefaults.repoKey) as? [String] else {
-            
-            let defaultRepos = ["Daniel-Berezhnoy/SwiftUIBuddy"]
-            UserDefaults.shared.set(defaultRepos, forKey: UserDefaults.repoKey)
-            repos = defaultRepos
-            
-            return
-        }
-        
-        repos = retrievedRepos
-    }
-    
-    func presentAlert(_ message: String) {
-        alertMessage = message
-        showingAlert = true
-        newRepo.removeAll()
+        viewModel.newRepo.trimmingCharacters(in: .whitespaces).isEmpty
     }
 }
 
