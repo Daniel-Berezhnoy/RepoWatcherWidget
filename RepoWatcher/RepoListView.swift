@@ -13,6 +13,9 @@ struct RepoListView: View {
     @State private var newRepo = ""
     @State private var repos: [String] = []
     
+    @State private var showingAlert = false
+    @State private var alertMessage = ""
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -22,6 +25,12 @@ struct RepoListView: View {
             .navigationTitle("Repo List")
         }
         .onAppear { retrieveSavedRepos() }
+        
+        .alert("Error", isPresented: $showingAlert) {
+            Button("Ok") {}
+        } message: {
+            Text(alertMessage)
+        }
     }
     
     var addRepoField: some View {
@@ -30,12 +39,23 @@ struct RepoListView: View {
                 .autocapitalization(.none)
                 .autocorrectionDisabled()
                 .textFieldStyle(.roundedBorder)
+                .onSubmit {
+                    if repos.contains(newRepo) {
+                        presentAlert("\(newRepo) was already saved.")
+                        
+                    } else if repoNameIsEmpty{
+                        presentAlert("Please enter the repo name and try again")
+                        
+                    } else {
+                        withAnimation { appendRepos(with: newRepo) }
+                    }
+                }
 
             Button {
-                if !repos.contains(newRepo) {
-                    appendRepos(with: newRepo)
+                if repos.contains(newRepo) {
+                    presentAlert("\(newRepo) was already saved.")
                 } else {
-                    // TODO: Show Alert "ERROR: This repo is already saved."
+                    withAnimation { appendRepos(with: newRepo) }
                 }
                 
             } label: {
@@ -61,7 +81,14 @@ struct RepoListView: View {
                 Text(repo)
                     .swipeActions {
                         Button("Delete") {
-                            
+                            if repos.count > 1 {
+                                withAnimation {
+                                    repos.removeAll { $0 == repo }
+                                    UserDefaults.shared.set(repos, forKey: UserDefaults.repoKey)
+                                }
+                            } else {
+                                presentAlert("You need to have at least one repo.")
+                            }
                         }
                         .tint(.red)
                     }
@@ -90,6 +117,12 @@ struct RepoListView: View {
         }
         
         repos = retrievedRepos
+    }
+    
+    func presentAlert(_ message: String) {
+        alertMessage = message
+        showingAlert = true
+        newRepo.removeAll()
     }
 }
 
