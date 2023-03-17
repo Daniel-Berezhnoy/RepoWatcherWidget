@@ -37,7 +37,7 @@ struct RepoListView: View {
                 .autocorrectionDisabled()
                 .textFieldStyle(.roundedBorder)
                 .onSubmit { addRepoWithKeyboard() }
-
+            
             // Plus Button
             Button {
                 addRepoWithButton()
