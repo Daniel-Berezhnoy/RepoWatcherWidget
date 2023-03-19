@@ -8,20 +8,20 @@
 import WidgetKit
 import SwiftUI
 
-struct MediumWidgetProvider: TimelineProvider {
-
+struct MediumWidgetProvider: IntentTimelineProvider {
+    
     let repoToShow = NetworkManager.shared.selectedRepoURL
 
     func placeholder(in context: Context) -> MediumWidgetEntry {
         MediumWidgetEntry(date: Date(), repo: Repository.placeholder)
     }
-
-    func getSnapshot(in context: Context, completion: @escaping (MediumWidgetEntry) -> ()) {
+    
+    func getSnapshot(for configuration: SelectRepoIntent, in context: Context, completion: @escaping (MediumWidgetEntry) -> Void) {
         let entry = MediumWidgetEntry(date: Date(), repo: Repository.placeholder)
         completion(entry)
     }
-
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+    
+    func getTimeline(for configuration: SelectRepoIntent, in context: Context, completion: @escaping (Timeline<MediumWidgetEntry>) -> Void) {
         Task {
             let nextUpdate = Date().addingTimeInterval(43_200) // 12 hours = 43,200 seconds
 
@@ -58,7 +58,9 @@ struct MediumWidget: Widget {
     let kind: String = "MediumWidget"
     
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: MediumWidgetProvider()) { entry in
+        IntentConfiguration(kind: kind,
+                            intent: SelectRepoIntent.self,
+                            provider: MediumWidgetProvider()) { entry in
             MediumWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("Repo Stats")
