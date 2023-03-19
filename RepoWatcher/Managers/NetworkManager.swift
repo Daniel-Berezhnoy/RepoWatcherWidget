@@ -79,6 +79,7 @@ enum NetworkError: Error {
 }
 
 enum RepoURL {
+    static let prefix = "https://api.github.com/repos/"
     static let swiftUIBuddy = "https://api.github.com/repos/Daniel-Berezhnoy/SwiftUIBuddy"
     static let codeEdit = "https://api.github.com/repos/CodeEditApp/CodeEdit"
     static let setting = "https://api.github.com/repos/aheze/Setting"

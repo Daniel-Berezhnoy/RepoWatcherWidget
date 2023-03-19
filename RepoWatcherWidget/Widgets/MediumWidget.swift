@@ -10,8 +10,6 @@ import SwiftUI
 
 struct MediumWidgetProvider: IntentTimelineProvider {
     
-    let repoToShow = NetworkManager.shared.selectedRepoURL
-
     func placeholder(in context: Context) -> MediumWidgetEntry {
         MediumWidgetEntry(date: Date(), repo: Repository.placeholder)
     }
@@ -26,7 +24,9 @@ struct MediumWidgetProvider: IntentTimelineProvider {
             let nextUpdate = Date().addingTimeInterval(43_200) // 12 hours = 43,200 seconds
 
             do {
+                let repoToShow = RepoURL.prefix + (configuration.repo ?? "Daniel-Berezhnoy/SwiftUIBuddy")
                 var repo = try await NetworkManager.shared.getRepo(from: repoToShow)
+                
                 let avatarImageData = await NetworkManager.shared.downloadImageData(from: repo.owner.avatarUrl)
                 repo.avatarData = avatarImageData
 
@@ -71,7 +71,8 @@ struct MediumWidget: Widget {
 
 struct MediumWidget_Previews: PreviewProvider {
     static var previews: some View {
-        MediumWidgetEntryView(entry: MediumWidgetEntry(date: Date(), repo: Repository.placeholder))
+        MediumWidgetEntryView(entry: MediumWidgetEntry(date: Date(),
+                                                       repo: Repository.placeholder))
             .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }
