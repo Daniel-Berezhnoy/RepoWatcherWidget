@@ -79,11 +79,12 @@ struct LargeWidget: Widget {
     let kind: String = "LargeWidget"
     
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: LargeWidgetProvider()) { entry in
+        StaticConfiguration(kind: kind,
+                            provider: LargeWidgetProvider()) { entry in
             LargeWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("Top Contributors")
-        .description("Keep an eye on the repo stats + the top 4 contributors!")
+        .configurationDisplayName("Maximum Info")
+        .description("Repo Stats + the top 4 contributors!")
         .supportedFamilies([.systemLarge])
     }
 }
