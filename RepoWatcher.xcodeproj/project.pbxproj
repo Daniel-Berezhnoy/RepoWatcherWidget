@@ -13,6 +13,8 @@
 		B95DBD1129C6AC26006A6ADD /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B963F74129BD3CD100E0F75D /* Intents.framework */; };
 		B95DBD1429C6AC26006A6ADD /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95DBD1329C6AC26006A6ADD /* IntentHandler.swift */; };
 		B95DBD1829C6AC26006A6ADD /* RepoWatcherIntents.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B95DBD1029C6AC26006A6ADD /* RepoWatcherIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B95DBD1D29C6ADA3006A6ADD /* SelectRepoIntent.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B95DBD0929C6AADB006A6ADD /* SelectRepoIntent.intentdefinition */; };
+		B95DBD1E29C6AED3006A6ADD /* UserDefaults+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FCCAD029C4EA1C00D69676 /* UserDefaults+Ext.swift */; };
 		B9CAA56029B56998004246A8 /* TopContributorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CAA55F29B56998004246A8 /* TopContributorsView.swift */; };
 		B9CAA56429B57070004246A8 /* Contributor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CAA56329B57070004246A8 /* Contributor.swift */; };
 		B9CAA56529B57070004246A8 /* Contributor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CAA56329B57070004246A8 /* Contributor.swift */; };
@@ -382,7 +384,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B95DBD1D29C6ADA3006A6ADD /* SelectRepoIntent.intentdefinition in Sources */,
 				B95DBD1429C6AC26006A6ADD /* IntentHandler.swift in Sources */,
+				B95DBD1E29C6AED3006A6ADD /* UserDefaults+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
