@@ -23,7 +23,6 @@ struct LastUpdateView: View {
     
     var repoName: some View {
         Text(repo.name)
-//            .font(.body)
             .fontWeight(.semibold)
             .minimumScaleFactor(0.6)
             .lineLimit(1)
