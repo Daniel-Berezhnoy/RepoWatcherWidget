@@ -29,17 +29,35 @@ struct LastUpdateView: View {
     }
     
     var daysSinceUpdated: some View {
-        Text("\(daysSinceLastActivity)")
-            .font(.system(size: 75, weight: .bold))
-            .minimumScaleFactor(0.6)
-            .lineLimit(1)
-            .foregroundColor(dynamicColor)
+        ZStack {
+            if updatedToday {
+                Image(systemName: "checkmark.circle")
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundColor(.green)
+                    .padding(5)
+            } else {
+                Text("\(daysSinceLastActivity)")
+                    .font(.system(size: 75, weight: .bold))
+                    .minimumScaleFactor(0.6)
+                    .lineLimit(1)
+                    .foregroundColor(dynamicColor)
+            }
+        }
     }
     
     var daysAgo: some View {
-        Text("days ago")
-            .font(.caption2)
-            .foregroundColor(.secondary)
+        ZStack {
+            if updatedToday {
+                Text("Updated Today")
+                    .font(.caption2)
+                    .foregroundColor(.secondary)
+            } else {
+                Text("days ago")
+                    .font(.caption2)
+                    .foregroundColor(.secondary)
+            }
+        }
     }
     
     var avatarData: UIImage {
@@ -56,6 +74,10 @@ struct LastUpdateView: View {
         } else {
             return .green
         }
+    }
+    
+    var updatedToday: Bool {
+        daysSinceLastActivity < 1
     }
     
     var daysSinceLastActivity: Int {

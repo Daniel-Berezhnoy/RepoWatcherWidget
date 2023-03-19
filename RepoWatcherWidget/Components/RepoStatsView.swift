@@ -64,17 +64,35 @@ struct RepoStatsView: View {
     }
     
     var daysSinceUpdated: some View {
-        VStack {
-            Text("\(daysSinceLastActivity)")
-                .font(.system(size: 75, weight: .bold))
-                .minimumScaleFactor(0.6)
-                .lineLimit(1)
-                .frame(width: 90)
-                .foregroundColor(dynamicColor)
-            
-            Text("days ago")
-                .font(.caption2)
-                .foregroundColor(.secondary)
+        ZStack {
+            if updatedToday {
+                VStack {
+                    Image(systemName: "checkmark.circle")
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundColor(.green)
+                        .frame(width: 60)
+                        .padding(.bottom)
+                    
+                    Text("Updated Today")
+                        .font(.caption2)
+                        .foregroundColor(.secondary)
+                }
+                
+            } else {
+                VStack {
+                    Text("\(daysSinceLastActivity)")
+                        .font(.system(size: 75, weight: .bold))
+                        .minimumScaleFactor(0.6)
+                        .lineLimit(1)
+                        .frame(width: 90)
+                        .foregroundColor(dynamicColor)
+                    
+                    Text("days ago")
+                        .font(.caption2)
+                        .foregroundColor(.secondary)
+                }
+            }
         }
     }
     
@@ -92,6 +110,10 @@ struct RepoStatsView: View {
         } else {
             return .green
         }
+    }
+    
+    var updatedToday: Bool {
+        daysSinceLastActivity < 1
     }
     
     var daysSinceLastActivity: Int {
