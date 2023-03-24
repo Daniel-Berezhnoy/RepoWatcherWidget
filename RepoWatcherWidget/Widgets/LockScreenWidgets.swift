@@ -55,65 +55,74 @@ struct LockScreenWidgetsEntryView: View {
         switch family {
                 
             case .accessoryInline:
-                Text("\(entry.repo.name) - \(entry.repo.daysSinceLastActivity)")
+                inlineWidget
                 
             case .accessoryCircular:
-                ZStack {
-                    AccessoryWidgetBackground()
-                    
-                    VStack {
-                        Text("\(entry.repo.daysSinceLastActivity)")
-                            .font(.headline)
-                        
-                        Text("days")
-                            .font(.caption)
-                    }
-                }
+                circularWidget
                 
             case .accessoryRectangular:
-                VStack(alignment: .leading) {
-                    
-                    Text(entry.repo.name)
-                        .font(.headline)
-                    
-                    Text("\(entry.repo.daysSinceLastActivity) days")
-                        .foregroundColor(.secondary)
-                    
-                    HStack {
-                        Image(systemName: "star.fill")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 12, height: 12)
-                        
-                        Text("\(entry.repo.watchers)")
-                        
-                        Image(systemName: "tuningfork")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 12, height: 12)
-                        
-                        Text("\(entry.repo.forks)")
-                        
-                        if entry.repo.hasIssues {
-                            Image(systemName: "exclamationmark.triangle.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 12, height: 12)
-                            
-                            Text("\(entry.repo.openIssues)")
-                        }
-                    }
-                    .font(.caption)
-                }
-                
-            case .systemMedium:
-                LastUpdateView(for: entry.repo)
-                
-            case .systemSmall, .systemLarge, .systemExtraLarge:
+                rectangularWidget
+
+            case .systemSmall, .systemMedium, .systemLarge, .systemExtraLarge:
                 EmptyView()
                 
             @unknown default:
                 EmptyView()
+        }
+    }
+    
+    var inlineWidget: some View {
+        Text("\(entry.repo.name) - \(entry.repo.daysSinceLastActivity)")
+    }
+    
+    var circularWidget: some View {
+        ZStack {
+            AccessoryWidgetBackground()
+            
+            VStack {
+                Text("\(entry.repo.daysSinceLastActivity)")
+                    .font(.headline)
+                
+                Text("days")
+                    .font(.caption)
+            }
+        }
+    }
+    
+    var rectangularWidget: some View {
+        VStack(alignment: .leading) {
+            
+            Text(entry.repo.name)
+                .font(.headline)
+            
+            Text("\(entry.repo.daysSinceLastActivity) days")
+                .foregroundColor(.secondary)
+            
+            HStack {
+                Image(systemName: "star.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 12, height: 12)
+                
+                Text("\(entry.repo.watchers)")
+                
+                Image(systemName: "tuningfork")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 12, height: 12)
+                
+                Text("\(entry.repo.forks)")
+                
+                if entry.repo.hasIssues {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 12, height: 12)
+                    
+                    Text("\(entry.repo.openIssues)")
+                }
+            }
+            .font(.caption)
         }
     }
 }
