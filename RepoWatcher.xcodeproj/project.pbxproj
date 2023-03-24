@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B903F82729B51A6700208830 /* LargeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B903F82629B51A6700208830 /* LargeWidget.swift */; };
+		B90CE84E29CE386A00E1723B /* LockScreenWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90CE84C29CE386A00E1723B /* LockScreenWidgets.swift */; };
 		B95DBD0A29C6AADB006A6ADD /* SelectRepoIntent.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B95DBD0929C6AADB006A6ADD /* SelectRepoIntent.intentdefinition */; };
 		B95DBD0B29C6AADB006A6ADD /* SelectRepoIntent.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B95DBD0929C6AADB006A6ADD /* SelectRepoIntent.intentdefinition */; };
 		B95DBD1129C6AC26006A6ADD /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B963F74129BD3CD100E0F75D /* Intents.framework */; };
@@ -74,6 +75,7 @@
 
 /* Begin PBXFileReference section */
 		B903F82629B51A6700208830 /* LargeWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeWidget.swift; sourceTree = "<group>"; };
+		B90CE84C29CE386A00E1723B /* LockScreenWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenWidgets.swift; sourceTree = "<group>"; };
 		B95DBD0929C6AADB006A6ADD /* SelectRepoIntent.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = SelectRepoIntent.intentdefinition; sourceTree = "<group>"; };
 		B95DBD1029C6AC26006A6ADD /* RepoWatcherIntents.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RepoWatcherIntents.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		B95DBD1329C6AC26006A6ADD /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
@@ -141,6 +143,14 @@
 				B903F82629B51A6700208830 /* LargeWidget.swift */,
 			);
 			path = Widgets;
+			sourceTree = "<group>";
+		};
+		B90CE84B29CE37F300E1723B /* Lock Screen Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				B90CE84C29CE386A00E1723B /* LockScreenWidgets.swift */,
+			);
+			path = "Lock Screen Widgets";
 			sourceTree = "<group>";
 		};
 		B95DBD1229C6AC26006A6ADD /* RepoWatcherIntents */ = {
@@ -223,6 +233,7 @@
 			children = (
 				B9F7282D29AFE5AA007E8264 /* RepoWatcherWidgetBundle.swift */,
 				B903F82529B51A3600208830 /* Widgets */,
+				B90CE84B29CE37F300E1723B /* Lock Screen Widgets */,
 				B9F7284629B401C2007E8264 /* Components */,
 				B9F7283129AFE5AA007E8264 /* Assets.xcassets */,
 				B9F7283329AFE5AA007E8264 /* Info.plist */,
@@ -415,6 +426,7 @@
 				B9CAA56929B682E5004246A8 /* SmallWidget.swift in Sources */,
 				B9F7283029AFE5AA007E8264 /* MediumWidget.swift in Sources */,
 				B9F7284829B401F0007E8264 /* RepoStatsView.swift in Sources */,
+				B90CE84E29CE386A00E1723B /* LockScreenWidgets.swift in Sources */,
 				B9CAA56C29B6852C004246A8 /* LastUpdateView.swift in Sources */,
 				B9F7282E29AFE5AA007E8264 /* RepoWatcherWidgetBundle.swift in Sources */,
 				B9F7283D29B14D98007E8264 /* Repository.swift in Sources */,
