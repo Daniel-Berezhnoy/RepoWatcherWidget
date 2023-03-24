@@ -55,13 +55,56 @@ struct LockScreenWidgetsEntryView: View {
         switch family {
                 
             case .accessoryInline:
-                Text("\(entry.repo.name): 5 days")
-                
-            case .accessoryRectangular:
-                Text("Accessory Rectangular")
+                Text("\(entry.repo.name) - \(entry.repo.daysSinceLastActivity)")
                 
             case .accessoryCircular:
-                Text("Accessory Circular")
+                ZStack {
+                    AccessoryWidgetBackground()
+                    
+                    VStack {
+                        Text("\(entry.repo.daysSinceLastActivity)")
+                            .font(.headline)
+                        
+                        Text("days")
+                            .font(.caption)
+                    }
+                }
+                
+            case .accessoryRectangular:
+                VStack(alignment: .leading) {
+                    
+                    Text(entry.repo.name)
+                        .font(.headline)
+                    
+                    Text("\(entry.repo.daysSinceLastActivity) days")
+                        .foregroundColor(.secondary)
+                    
+                    HStack {
+                        Image(systemName: "star.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 12, height: 12)
+                        
+                        Text("\(entry.repo.watchers)")
+                        
+                        Image(systemName: "tuningfork")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 12, height: 12)
+                        
+                        Text("\(entry.repo.forks)")
+                        
+                        if entry.repo.hasIssues {
+                            Image(systemName: "exclamationmark.triangle.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 12, height: 12)
+                            
+                            Text("\(entry.repo.openIssues)")
+                        }
+                    }
+                    .font(.caption)
+                }
                 
             case .systemMedium:
                 LastUpdateView(for: entry.repo)
@@ -94,6 +137,6 @@ struct LockScreenWidgets_Previews: PreviewProvider {
     static var previews: some View {
         LockScreenWidgetsEntryView(entry: LockScreenWidgetsEntry(date: .now,
                                                                  repo: Repository.placeholder))
-            .previewContext(WidgetPreviewContext(family: .accessoryInline))
+            .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
     }
 }
