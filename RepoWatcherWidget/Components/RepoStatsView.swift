@@ -9,9 +9,7 @@ import SwiftUI
 import WidgetKit
 
 struct RepoStatsView: View {
-    
     let repo: Repository
-    let dateFormatter = ISO8601DateFormatter()
     
     var body: some View {
         HStack {
@@ -81,7 +79,7 @@ struct RepoStatsView: View {
                 
             } else {
                 VStack {
-                    Text("\(daysSinceLastActivity)")
+                    Text("\(repo.daysSinceLastActivity)")
                         .font(.system(size: 75, weight: .bold))
                         .minimumScaleFactor(0.6)
                         .lineLimit(1)
@@ -101,10 +99,10 @@ struct RepoStatsView: View {
     }
     
     var dynamicColor: Color {
-        if daysSinceLastActivity > 90 {
+        if repo.daysSinceLastActivity > 90 {
             return .pink
             
-        } else if daysSinceLastActivity > 30 {
+        } else if repo.daysSinceLastActivity > 30 {
             return .yellow
             
         } else {
@@ -113,24 +111,11 @@ struct RepoStatsView: View {
     }
     
     var updatedToday: Bool {
-        daysSinceLastActivity < 1
-    }
-    
-    var daysSinceLastActivity: Int {
-        calculateDaysSinceLastActivity(since: repo.pushedAt)
+        repo.daysSinceLastActivity < 1
     }
     
     var issuesAreEnabled: Bool {
         repo.hasIssues
-    }
-    
-    func calculateDaysSinceLastActivity(since dateString: String) -> Int {
-        
-        let lastActivityDate = dateFormatter.date(from: dateString) ?? .now
-        let timeSinceLastActivity = Calendar.current.dateComponents([.day],
-                                                                    from: lastActivityDate,
-                                                                    to: .now)
-        return timeSinceLastActivity.day ?? 0
     }
     
     init(for repo: Repository) {

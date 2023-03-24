@@ -55,7 +55,7 @@ struct LockScreenWidgetsEntryView: View {
         switch family {
                 
             case .accessoryInline:
-                Text("Accessory Inline")
+                Text("\(entry.repo.name): 5 days")
                 
             case .accessoryRectangular:
                 Text("Accessory Rectangular")
@@ -63,7 +63,10 @@ struct LockScreenWidgetsEntryView: View {
             case .accessoryCircular:
                 Text("Accessory Circular")
                 
-            case .systemSmall, .systemMedium, .systemLarge, .systemExtraLarge:
+            case .systemMedium:
+                LastUpdateView(for: entry.repo)
+                
+            case .systemSmall, .systemLarge, .systemExtraLarge:
                 EmptyView()
                 
             @unknown default:
