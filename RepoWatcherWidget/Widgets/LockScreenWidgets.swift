@@ -47,10 +47,28 @@ struct LockScreenWidgetsEntry: TimelineEntry {
 }
 
 struct LockScreenWidgetsEntryView: View {
+    
+    @Environment(\.widgetFamily) var family
     var entry: LockScreenWidgetsEntry
     
     var body: some View {
-        LastUpdateView(for: entry.repo)
+        switch family {
+                
+            case .accessoryInline:
+                Text("Accessory Inline")
+                
+            case .accessoryRectangular:
+                Text("Accessory Rectangular")
+                
+            case .accessoryCircular:
+                Text("Accessory Circular")
+                
+            case .systemSmall, .systemMedium, .systemLarge, .systemExtraLarge:
+                EmptyView()
+                
+            @unknown default:
+                EmptyView()
+        }
     }
 }
 
@@ -65,7 +83,7 @@ struct LockScreenWidgets: Widget {
         }
         .configurationDisplayName("Last Update")
         .description("See how many days ago the repository was updated.")
-        .supportedFamilies([.systemSmall])
+        .supportedFamilies([.accessoryInline, .accessoryRectangular, .accessoryCircular])
     }
 }
 
@@ -73,6 +91,6 @@ struct LockScreenWidgets_Previews: PreviewProvider {
     static var previews: some View {
         LockScreenWidgetsEntryView(entry: LockScreenWidgetsEntry(date: .now,
                                                                  repo: Repository.placeholder))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+            .previewContext(WidgetPreviewContext(family: .accessoryInline))
     }
 }

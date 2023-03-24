@@ -14,5 +14,6 @@ struct RepoWatcherWidgetBundle: WidgetBundle {
         SmallWidget()
         MediumWidget()
         LargeWidget()
+        LockScreenWidgets()
     }
 }

@@ -141,16 +141,9 @@
 				B9CAA56729B682E5004246A8 /* SmallWidget.swift */,
 				B9F7282F29AFE5AA007E8264 /* MediumWidget.swift */,
 				B903F82629B51A6700208830 /* LargeWidget.swift */,
-			);
-			path = Widgets;
-			sourceTree = "<group>";
-		};
-		B90CE84B29CE37F300E1723B /* Lock Screen Widgets */ = {
-			isa = PBXGroup;
-			children = (
 				B90CE84C29CE386A00E1723B /* LockScreenWidgets.swift */,
 			);
-			path = "Lock Screen Widgets";
+			path = Widgets;
 			sourceTree = "<group>";
 		};
 		B95DBD1229C6AC26006A6ADD /* RepoWatcherIntents */ = {
@@ -233,7 +226,6 @@
 			children = (
 				B9F7282D29AFE5AA007E8264 /* RepoWatcherWidgetBundle.swift */,
 				B903F82529B51A3600208830 /* Widgets */,
-				B90CE84B29CE37F300E1723B /* Lock Screen Widgets */,
 				B9F7284629B401C2007E8264 /* Components */,
 				B9F7283129AFE5AA007E8264 /* Assets.xcassets */,
 				B9F7283329AFE5AA007E8264 /* Info.plist */,
