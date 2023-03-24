@@ -54,7 +54,8 @@ struct RepoStatsView: View {
         HStack(spacing: 12) {
             StatLabel(value: repo.watchers, systemImageName: "star.fill")
             StatLabel(value: repo.forks , systemImageName: "tuningfork")
-            if issuesAreEnabled {
+            
+            if repo.hasIssues {
                 StatLabel(value: repo.openIssues,
                           systemImageName: "exclamationmark.triangle.fill")
             }
@@ -112,10 +113,6 @@ struct RepoStatsView: View {
     
     var updatedToday: Bool {
         repo.daysSinceLastActivity < 1
-    }
-    
-    var issuesAreEnabled: Bool {
-        repo.hasIssues
     }
     
     init(for repo: Repository) {

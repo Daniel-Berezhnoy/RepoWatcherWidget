@@ -75,14 +75,14 @@ extension Repository {
 
 extension Repository {
     var daysSinceLastActivity: Int {
-        
+
         let dateFormatter = ISO8601DateFormatter()
         let lastActivityDate = dateFormatter.date(from: pushedAt ) ?? .now
-        
+
         let timeSinceLastActivity = Calendar.current.dateComponents([.day],
                                                                     from: lastActivityDate,
                                                                     to: .now)
-        let daysSinceLastActivity = timeSinceLastActivity.day ?? 0 
+        let daysSinceLastActivity = timeSinceLastActivity.day ?? 0
         return daysSinceLastActivity
     }
 }
